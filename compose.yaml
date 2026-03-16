@@ -1,0 +1,8 @@
+services:
+  ros:
+    build: .
+    ports:
+      - "9090:9090"
+      - "8000:8000"
+    volumes:
+      - .:/catkin_ws
