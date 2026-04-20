@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>rover_frontend</name>
+  <version>0.0.0</version>
+  <description>The rover_frontend package</description>
+
+  <maintainer email="145073726+spencrc@users.noreply.github.com">spencrc</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>rosbridge_server</build_depend>
+
+  <exec_depend>rosbridge_server</exec_depend>
+
+  <!-- The export tag is required even if left empty -->
+  <export></export>
+</package>

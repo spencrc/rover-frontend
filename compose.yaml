@@ -1,8 +1,25 @@
 services:
-  ros:
-    build: .
+  gui:
+    image: nginx:alpine
+    ports:
+      - "8000:80"
+    volumes:
+      - ./gui:/usr/share/nginx/html:ro,z
+  rosbridge_server:
+    build:
+      context: .
+    command: >
+      /bin/bash -c "source ./devel/setup.bash &&
+      roslaunch rover_frontend websocket.launch"
     ports:
       - "9090:9090"
-      - "8000:8000"
-    volumes:
-      - .:/catkin_ws
+  tester:
+    build:
+      context: .
+    stdin_open: true
+    tty: true
+    command: /bin/bash
+    environment:
+      - ROS_MASTER_URI=http://rosbridge_server:11311
+    depends_on:
+      - rosbridge_server
