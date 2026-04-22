@@ -16,8 +16,7 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt/lists,sharing=locked \
     apt-get update && \
     rosdep update --include-eol-distros && \
-    rosdep install --from-paths src --ignore-src -r -y && \
-    rm -rf /var/lib/apt/lists/*
+    rosdep install --from-paths src --ignore-src -r -y
 
 # Build the catkin workspace
 RUN /bin/bash -c "source /opt/ros/noetic/setup.bash && catkin_make"
